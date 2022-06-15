@@ -7,6 +7,7 @@ import (
 	"microuser/routes"
 )
 
+//
 func main() {
 
 	e := echo.New()
@@ -21,9 +22,9 @@ func main() {
 	userGroup := e.Group("/user")
 	{
 		userGroup.POST("", routes.CreateUserController)
-		userGroup.DELETE("", routes.DeleteUserController)
-		userGroup.PUT("", routes.UpdateUserController)
-		userGroup.GET("", routes.GetUserController)
+		userGroup.DELETE("/:id", routes.DeleteUserController)
+		userGroup.PUT("/:id", routes.UpdateUserController)
+		userGroup.GET("/:id", routes.GetUserController)
 	}
 
 	authGroup := e.Group("/auth")
@@ -33,5 +34,5 @@ func main() {
 	}
 
 	e.Logger.Fatal(e.Start(":8080"))
-
+	//
 }
